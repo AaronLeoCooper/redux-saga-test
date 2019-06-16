@@ -4,21 +4,21 @@ import { Row, Col, Spin, Typography as T } from 'antd';
 
 import './UsersList.css';
 
-function UsersList({ users, fetching, error }) {
+function UsersList({ users, fetching }) {
   if (fetching) {
     return (
-      <Row type="flex" justify="center">
+      <Row type="flex" justify="center" data-testid="UsersList">
         <Col>
-          <Spin size="large" />
+          <Spin size="large" data-testid="UsersList__spinner" />
         </Col>
       </Row>
     );
   }
 
   return (
-    <Row type="flex" gutter={16}>
+    <Row type="flex" gutter={16} data-testid="UsersList">
       {users.map(({ id, login, html_url, avatar_url }) => (
-        <Col key={id} span={6}>
+        <Col key={id} span={6} data-testid="UsersList__userItem">
           <a href={html_url} target="_blank" rel="noopener noreferrer">
             <img src={avatar_url} alt={login} className="UsersList__img" />
             <T.Title level={3}>{login}</T.Title>
@@ -38,8 +38,7 @@ UsersList.propTypes = {
       avatar_url: PropTypes.string
     })
   ),
-  fetching: PropTypes.bool,
-  error: PropTypes.string
+  fetching: PropTypes.bool
 };
 
 UsersList.defaultProps = {

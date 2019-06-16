@@ -7,7 +7,7 @@ import './Users.css';
 
 function Users() {
   return (
-    <div className="Users__container">
+    <div className="Users__container" data-testid="Users">
       <UsersSearchContainer />
       <UsersListContainer />
     </div>

@@ -23,7 +23,7 @@ export function* usersSagas() {
   yield takeLatest(startFetch.getType(), fetch);
 }
 
-const initialState = {
+export const initialState = {
   fetching: false,
   data: undefined,
   error: undefined
@@ -31,7 +31,11 @@ const initialState = {
 
 export default createReducer(
   {
-    [startFetch]: state => ({ ...state, fetching: true }),
+    [startFetch]: state => ({
+      ...state,
+      fetching: true,
+      error: initialState.error
+    }),
 
     [successFetch]: (state, payload) => ({
       ...state,

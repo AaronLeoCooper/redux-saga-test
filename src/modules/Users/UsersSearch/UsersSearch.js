@@ -8,7 +8,7 @@ function UsersSearch({ startFetch }) {
   const onChange = ({ target: { value } }) => startFetch(value);
 
   return (
-    <div className="UsersSearch__container">
+    <div className="UsersSearch__container" data-testid="UsersSearch">
       <Input placeholder="Search from user ID" onBlur={onChange} />
     </div>
   );
